@@ -20,11 +20,6 @@ def main():
     cv2.imwrite('output.jpg', cv2.cvtColor(output_image, cv2.COLOR_RGB2BGR))
 
 
-def crop_image(image: np.ndarray, coordinates: Tuple[int]) -> np.ndarray:
-    top, right, bottom, left = coordinates
-    return image[top:bottom, left:right, :]
-
-
 def resize_image(image: np.ndarray, coordinates: Tuple[int]) -> np.ndarray:
     top, right, bottom, left = coordinates
     resized_image = cv2.resize(image, dsize=(right - left, bottom - top), interpolation=cv2.INTER_CUBIC)
