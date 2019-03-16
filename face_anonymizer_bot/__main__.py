@@ -6,7 +6,7 @@ import cv2
 import face_recognition
 import numpy as np
 
-from settings import REPLACED_IMAGE_PATH
+from .settings import REPLACED_IMAGE_PATH
 
 
 def main(target_image_path):
