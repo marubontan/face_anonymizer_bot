@@ -9,8 +9,12 @@ import numpy as np
 from .settings import REPLACED_IMAGE_PATH
 
 
-def main(target_image_path):
-    image = face_recognition.load_image_file(target_image_path)
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('target_image_path')
+    args = parser.parse_args()
+
+    image = face_recognition.load_image_file(args.target_image_path)
     replaced_image = face_recognition.load_image_file(REPLACED_IMAGE_PATH)
     output_image = replace_faces(image, replaced_image)
     cv2.imwrite('output.jpg', cv2.cvtColor(output_image, cv2.COLOR_RGB2BGR))
@@ -40,7 +44,4 @@ def replace_faces(image: np.ndarray, embedding_image: np.ndarray) -> np.ndarray:
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('target_image_path')
-    args = parser.parse_args()
-    main(args.target_image_path)
+    main()
